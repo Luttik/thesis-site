@@ -17,7 +17,26 @@ strong {
     font-weight: 600;
 }
 
-/* Table / figure labels (**Table 1.** / **Figure 1.**) stay body-colored */
+/* Table / figure captions: label + title on one centered line */
+.table-caption,
+.figure-caption {
+    text-align: center;
+    font-size: 0.875rem;
+    margin: 1.75em 0 0.35em;
+    line-height: 1.4;
+    scroll-margin-top: 1.5rem;
+
+    strong {
+        color: var(--foreground-color);
+        font-weight: 700;
+    }
+
+    em {
+        font-style: italic;
+    }
+}
+
+/* Legacy: standalone **Table N.** / **Figure N.** labels stay body-colored */
 p:has(> strong:only-child) {
     strong {
         color: var(--foreground-color);
@@ -53,9 +72,31 @@ h6 {
     }
 }
 
-h3 {
-    font-weight: 400;
-    font-style: italic;
+h1,
+h2 {
+    font-weight: 600;
+}
+
+/* Content headings only — leave page title/subtitle sizing alone */
+main {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1em;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 1.33em;
+    }
+
+    h3 {
+        font-weight: 400;
+        font-style: italic;
+    }
 }
 
 hr {
@@ -72,6 +113,20 @@ p img,
 article img {
     max-width: 100%;
     height: auto;
+}
+
+.figure {
+    margin: 0.5em 0 1.75em;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.figure-sm img {
+    max-width: min(100%, 28rem);
 }
 
 li::marker {
@@ -96,9 +151,9 @@ a {
 
 blockquote {
     margin: 16pt 0;
-    padding: 0.4pt 16pt;
+    padding: 0 16pt;
     font-size: inherit;
-    font-style: italic;
+    font-style: normal;
 
     border-left: 4px solid var(--link-blue);
 }
@@ -118,22 +173,15 @@ code:not([class*="language-"]) {
     background-color: var(--soft-dark);
 }
 
-/* Booktabs-inspired tables (mirrors thesis-shareable LaTeX) */
+/* shadcn-style card + table */
 .table-scroll {
     width: 100%;
     overflow-x: auto;
     margin: 0.35em 0 1.75em;
-}
-
-.table-caption {
-    font-size: 0.875rem;
-    margin: 1.75em 0 0.35em;
-    line-height: 1.4;
-
-    strong {
-        color: var(--foreground-color);
-        font-weight: 700;
-    }
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--background-color);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.12);
 }
 
 table {
@@ -141,40 +189,41 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 0.8rem;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--foreground-color);
-    /* toprule + bottomrule */
-    border-top: 2px solid var(--foreground-color);
-    border-bottom: 2px solid var(--foreground-color);
+    border: none;
 }
 
 th,
 td {
     border: none;
     background: transparent;
-    padding: 0.4em 0.55em;
+    padding: 0.65em 0.85em;
     text-align: left;
     vertical-align: top;
     font-weight: 400;
 }
 
+thead {
+    background: var(--soft-dark);
+}
+
 th {
     font-weight: 700;
-    vertical-align: bottom;
+    color: var(--foreground-color);
+    vertical-align: middle;
 }
 
-/* midrule under header */
 thead tr:last-child th {
-    border-bottom: 1px solid var(--foreground-color);
-    padding-bottom: 0.5em;
-}
-
-tbody tr:first-child td {
-    padding-top: 0.5em;
+    border-bottom: 1px solid var(--color-border);
 }
 
 tbody tr:not(:last-child) td {
     border-bottom: 1px solid var(--color-border);
+}
+
+tbody tr:hover td {
+    background: color-mix(in srgb, var(--soft-dark) 70%, transparent);
 }
 
 .participants-table {
@@ -186,14 +235,38 @@ tbody tr:not(:last-child) td {
 
     thead tr:first-child th {
         border-bottom: none;
-        padding-bottom: 0.25em;
+        padding-bottom: 0.2em;
+        color: var(--foreground-color);
+        font-weight: 700;
     }
 
     thead tr:last-child th {
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.72rem;
         line-height: 1.25;
         vertical-align: bottom;
+        color: var(--foreground-color);
+        border-bottom: 1px solid var(--color-border);
+    }
+}
+
+/* Table 3: muted full-width rules between theoretical coding sections */
+.codes-table {
+    tbody tr:not(:last-child) > td {
+        border-bottom: none;
+    }
+
+    tbody tr.section-rule > td {
+        padding: 0;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+        border-bottom: 1px solid var(--color-border);
+        background: transparent;
+    }
+
+    tbody tr.section-rule:hover > td {
+        background: transparent;
     }
 }
 
