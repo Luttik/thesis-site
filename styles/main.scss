@@ -222,14 +222,17 @@ tbody tr:not(:last-child) td {
     }
 }
 
-/* Table 3: horizontal rules only between theoretical coding sections */
+/* Table 3: muted full-width rules between theoretical coding sections */
 .codes-table {
-    tbody tr:not(:last-child) td {
+    tbody tr:not(:last-child) > td {
         border-bottom: none;
     }
 
-    td.section-cell,
-    tr.section-end td {
+    tbody tr.section-rule > td {
+        padding: 0;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
         border-bottom: 1px solid var(--color-border);
     }
 }
