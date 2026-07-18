@@ -155,7 +155,7 @@ blockquote {
     font-size: inherit;
     font-style: normal;
 
-    border-left: 4px solid var(--link-blue);
+    border-left: 1px solid var(--color-border);
 }
 
 code {
@@ -181,7 +181,7 @@ code:not([class*="language-"]) {
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
     background: var(--background-color);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 table {

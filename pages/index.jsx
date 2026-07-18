@@ -6,7 +6,7 @@ import { Footer } from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
 import { TableOfContents } from "../components/TableOfContents";
 import { fileToMdx, THESIS_PATH } from "../utils/mdxUtils";
-import { blog, header, description as descriptionClass, homeLink } from "../styles/blog.module.scss";
+import { blog, header, description as descriptionClass, homeLink, topActions, downloadButton } from "../styles/blog.module.scss";
 
 const SITE_URL = "https://thesis.daanluttik.nl";
 
@@ -70,9 +70,16 @@ export default function Index({ source, frontMatter, readingTime }) {
                 {subtitle ? (
                     <p className={descriptionClass}>{subtitle}</p>
                 ) : null}
-                <div style={{ margin: "16pt 0" }}>
+                <div className={topActions}>
                     <a href="https://daanluttik.nl" className={homeLink}>
                         👈 daanluttik.nl
+                    </a>
+                    <a
+                        href="/thesis-daan-luttik-mba.pdf"
+                        className={downloadButton}
+                        download="Thesis - Daan Luttik - MBA.pdf"
+                    >
+                        Download PDF
                     </a>
                 </div>
                 <div className={header}>
