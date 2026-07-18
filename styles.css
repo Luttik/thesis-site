@@ -1,0 +1,272 @@
+/* ---------------------------------------------------------------------
+   Same minimalist palette/type system as the thesis "shareable" edition:
+   ink, paper, one accent. Kept in sync by hand — see thesis/shareable's
+   styles/theme.css if the palette ever changes there.
+   --------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Source Serif Var";
+  src: url("assets/fonts/sourceserif4-roman-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Serif Italic Var";
+  src: url("assets/fonts/sourceserif4-italic-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex Mono";
+  src: url("assets/fonts/plexmono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex Mono";
+  src: url("assets/fonts/plexmono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex Mono";
+  src: url("assets/fonts/plexmono-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fbfaf7;
+  --ink: #1c1c1a;
+  --ink-soft: #5b5b56;
+  --ink-faint: #8c8c86;
+  --accent: #2f5d50;
+  --accent-soft: #4d7d6f;
+  --line: rgba(28, 28, 26, 0.14);
+  --line-strong: rgba(28, 28, 26, 0.3);
+
+  --serif: "Source Serif Var", Georgia, serif;
+  --serif-italic: "Source Serif Italic Var", Georgia, serif;
+  --mono: "Plex Mono", ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161614;
+    --ink: #edede8;
+    --ink-soft: #b7b7ae;
+    --ink-faint: #85857d;
+    --accent: #86c2af;
+    --accent-soft: #6a9c8d;
+    --line: rgba(237, 237, 232, 0.14);
+    --line-strong: rgba(237, 237, 232, 0.28);
+  }
+}
+
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  overflow-x: hidden;
+}
+
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 5rem) 1.5rem 6rem;
+}
+
+.logo {
+  width: 44px;
+  height: auto;
+  display: block;
+  margin: 0 0 2rem;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.9rem;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0 0 0.6rem;
+}
+
+.subtitle {
+  font-family: var(--serif-italic);
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  margin: 0 0 1rem;
+}
+
+.byline {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+  margin: 0 0 2.2rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2.6rem 0;
+}
+
+p {
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  margin: 0 0 1.15rem;
+  max-width: 38rem;
+}
+
+a { color: var(--accent); text-decoration-color: var(--line-strong); text-underline-offset: 0.15em; }
+
+/* stats */
+.stat-row { display: flex; gap: 2.2rem; margin: 1.8rem 0 2.4rem; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; }
+.stat-value {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 0.2rem;
+}
+
+/* four-stage process model */
+.process {
+  margin: 1.8rem 0 2.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+@media (max-width: 560px) { .process { grid-template-columns: 1fr; } }
+.process-stage {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 0.7rem;
+}
+.process-stage .tag {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.process-stage h3 { font-size: 1rem; margin: 0.3rem 0 0.4rem; font-weight: 600; }
+.process-stage ul { list-style: none; margin: 0; padding: 0; }
+.process-stage li { font-size: 0.92rem; color: var(--ink-soft); padding: 0.15rem 0; }
+.process-arrow {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--mono);
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  margin: -0.2rem 0;
+}
+.process-outcome {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--accent);
+  padding-top: 0.7rem;
+}
+.process-outcome .tag { color: var(--accent); }
+
+/* callout */
+.callout {
+  border-left: 2px solid var(--accent);
+  padding: 0.1rem 0 0.1rem 1.25rem;
+  margin: 1.8rem 0;
+}
+.callout p {
+  font-size: 1.15rem;
+  font-family: var(--serif-italic);
+  color: var(--ink);
+  margin: 0;
+}
+
+/* pull quote */
+.pullquote {
+  margin: 1.8rem 0;
+  border-left: 1px solid var(--line-strong);
+  padding-left: 1rem;
+}
+.pullquote blockquote {
+  margin: 0 0 0.6rem;
+  font-family: var(--serif-italic);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.pullquote figcaption {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* downloads */
+.downloads {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 1.6rem 0 0;
+}
+.btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+@media (prefers-color-scheme: dark) {
+  .btn-primary { background: var(--ink); color: var(--paper); }
+}
+
+footer {
+  margin-top: 3rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+footer a { color: var(--ink-faint); }
+footer a:hover { color: var(--accent); }
