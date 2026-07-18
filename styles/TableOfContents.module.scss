@@ -28,6 +28,134 @@
     }
 }
 
+/* Compact chapter pill — only when the side TOC is hidden */
+.compact {
+    display: block;
+    position: fixed;
+    top: 0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    width: min(calc(100vw - 1.5rem), 22rem);
+}
+
+@media (min-width: 1360px) {
+    .compact {
+        display: none;
+    }
+}
+
+.pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 60%;
+    margin: 0 auto;
+    padding: 0.4rem 0.75rem 0.4rem 0.85rem;
+    border: 1px solid color-mix(in srgb, var(--foreground-color) 12%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--background-color) 55%, transparent);
+    backdrop-filter: blur(18px) saturate(1.6);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    box-shadow:
+        0 1px 0 color-mix(in srgb, #ffffff 55%, transparent) inset,
+        0 2px 16px rgba(0, 0, 0, 0.08);
+    color: var(--foreground-color);
+    font-family: var(--sans-serif);
+    font-size: 0.8rem;
+    line-height: 1.3;
+    cursor: pointer;
+    text-align: center;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+
+    &:hover {
+        background: color-mix(in srgb, var(--background-color) 68%, transparent);
+        border-color: color-mix(in srgb, var(--link-blue) 35%, transparent);
+        box-shadow:
+            0 1px 0 color-mix(in srgb, #ffffff 65%, transparent) inset,
+            0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--link-blue);
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .pill {
+        background: color-mix(in srgb, var(--background-color) 45%, transparent);
+        border-color: color-mix(in srgb, #ffffff 14%, transparent);
+        box-shadow:
+            0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
+            0 2px 16px rgba(0, 0, 0, 0.35);
+
+        &:hover {
+            background: color-mix(in srgb, var(--background-color) 58%, transparent);
+            box-shadow:
+                0 1px 0 color-mix(in srgb, #ffffff 18%, transparent) inset,
+                0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+.pillChapter {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--foreground-color);
+    text-align: center;
+}
+
+.chevron,
+.chevronOpen {
+    flex: 0 0 auto;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1.5px solid var(--color-text-muted);
+    border-bottom: 1.5px solid var(--color-text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.18s ease;
+}
+
+.chevronOpen {
+    transform: rotate(225deg);
+    margin-top: 0.2rem;
+}
+
+.dropdown {
+    margin-top: 0.45rem;
+    padding: 0.85rem 0.75rem 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--foreground-color) 12%, transparent);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--background-color) 55%, transparent);
+    backdrop-filter: blur(18px) saturate(1.6);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    box-shadow:
+        0 1px 0 color-mix(in srgb, #ffffff 55%, transparent) inset,
+        0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+    .dropdown {
+        background: color-mix(in srgb, var(--background-color) 45%, transparent);
+        border-color: color-mix(in srgb, #ffffff 14%, transparent);
+        box-shadow:
+            0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
+            0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+}
+
 .label {
     font-family: "Lora", serif;
     font-size: 0.75rem;
