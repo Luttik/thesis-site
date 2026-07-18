@@ -175,7 +175,6 @@ export function TableOfContents() {
     return (
         <>
             <nav className={styles.toc} aria-label="Table of contents">
-                <div className={styles.label}>Contents</div>
                 {renderList()}
             </nav>
 
@@ -188,6 +187,7 @@ export function TableOfContents() {
                     aria-label="Table of contents"
                     onClick={() => setCompactOpen((open) => !open)}
                 >
+                    <span className={styles.frost} aria-hidden="true" />
                     <span className={styles.pillChapter}>
                         {activeChapter.text}
                     </span>
@@ -205,7 +205,10 @@ export function TableOfContents() {
                         className={styles.dropdown}
                         aria-label="Table of contents"
                     >
-                        {renderList(closeCompact)}
+                        <span className={styles.frost} aria-hidden="true" />
+                        <div className={styles.dropdownInner}>
+                            {renderList(closeCompact)}
+                        </div>
                     </nav>
                 ) : null}
             </div>

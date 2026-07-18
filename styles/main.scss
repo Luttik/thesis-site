@@ -151,11 +151,15 @@ code:not([class*="language-"]) {
     background-color: var(--soft-dark);
 }
 
-/* Booktabs-inspired tables (mirrors thesis-shareable LaTeX) */
+/* shadcn-style card + table */
 .table-scroll {
     width: 100%;
     overflow-x: auto;
     margin: 0.35em 0 1.75em;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--background-color);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.12);
 }
 
 table {
@@ -163,40 +167,41 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     font-size: 0.8rem;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--foreground-color);
-    /* toprule + bottomrule */
-    border-top: 2px solid var(--foreground-color);
-    border-bottom: 2px solid var(--foreground-color);
+    border: none;
 }
 
 th,
 td {
     border: none;
     background: transparent;
-    padding: 0.4em 0.55em;
+    padding: 0.65em 0.85em;
     text-align: left;
     vertical-align: top;
     font-weight: 400;
 }
 
+thead {
+    background: var(--soft-dark);
+}
+
 th {
     font-weight: 700;
-    vertical-align: bottom;
+    color: var(--foreground-color);
+    vertical-align: middle;
 }
 
-/* midrule under header */
 thead tr:last-child th {
-    border-bottom: 1px solid var(--foreground-color);
-    padding-bottom: 0.5em;
-}
-
-tbody tr:first-child td {
-    padding-top: 0.5em;
+    border-bottom: 1px solid var(--color-border);
 }
 
 tbody tr:not(:last-child) td {
     border-bottom: 1px solid var(--color-border);
+}
+
+tbody tr:hover td {
+    background: color-mix(in srgb, var(--soft-dark) 70%, transparent);
 }
 
 .participants-table {
@@ -206,19 +211,20 @@ tbody tr:not(:last-child) td {
         vertical-align: middle;
     }
 
-    /* Keep group headers visually separate from subheaders, but let the
-       midrule on the last header row run the full width (incl. col 1). */
     thead tr:first-child th {
         border-bottom: none;
-        padding-bottom: 0.25em;
+        padding-bottom: 0.2em;
+        color: var(--foreground-color);
+        font-weight: 700;
     }
 
     thead tr:last-child th {
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.72rem;
         line-height: 1.25;
         vertical-align: bottom;
-        border-bottom: 1px solid var(--foreground-color);
+        color: var(--foreground-color);
+        border-bottom: 1px solid var(--color-border);
     }
 }
 
@@ -234,6 +240,11 @@ tbody tr:not(:last-child) td {
         line-height: 0;
         font-size: 0;
         border-bottom: 1px solid var(--color-border);
+        background: transparent;
+    }
+
+    tbody tr.section-rule:hover > td {
+        background: transparent;
     }
 }
 

@@ -48,6 +48,7 @@
 }
 
 .pill {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,14 +58,9 @@
     padding: 0.4rem 0.75rem 0.4rem 0.85rem;
     border: 1px solid color-mix(in srgb, var(--foreground-color) 12%, transparent);
     border-radius: 999px;
-    /* Fallback, then translucent acrylic fill */
-    background: rgba(255, 255, 255, 0.55);
-    background: color-mix(in srgb, var(--background-color) 42%, transparent);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
-    box-shadow:
-        0 1px 0 color-mix(in srgb, #ffffff 55%, transparent) inset,
-        0 2px 16px rgba(0, 0, 0, 0.08);
+    /* Transparent shell — frost layer handles acrylic fill + blur */
+    background: transparent;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
     color: var(--foreground-color);
     font-family: var(--sans-serif);
     font-size: 0.8rem;
@@ -73,15 +69,11 @@
     text-align: center;
     transition:
         border-color 0.15s ease,
-        box-shadow 0.15s ease,
-        background 0.15s ease;
+        box-shadow 0.15s ease;
 
     &:hover {
-        background: color-mix(in srgb, var(--background-color) 55%, transparent);
         border-color: color-mix(in srgb, var(--link-blue) 35%, transparent);
-        box-shadow:
-            0 1px 0 color-mix(in srgb, #ffffff 65%, transparent) inset,
-            0 4px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
     &:focus-visible {
@@ -90,25 +82,27 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    .pill {
-        background: rgba(32, 33, 36, 0.45);
-        background: color-mix(in srgb, var(--background-color) 38%, transparent);
-        border-color: color-mix(in srgb, #ffffff 14%, transparent);
-        box-shadow:
-            0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
-            0 2px 16px rgba(0, 0, 0, 0.35);
+/* Dedicated layer: backdrop-filter on <button> itself is unreliable */
+.frost {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+}
 
-        &:hover {
-            background: color-mix(in srgb, var(--background-color) 50%, transparent);
-            box-shadow:
-                0 1px 0 color-mix(in srgb, #ffffff 18%, transparent) inset,
-                0 4px 20px rgba(0, 0, 0, 0.4);
-        }
+@media (prefers-color-scheme: dark) {
+    .frost {
+        background: rgba(32, 33, 36, 0.5);
     }
 }
 
 .pillChapter {
+    position: relative;
+    z-index: 1;
     flex: 0 1 auto;
     min-width: 0;
     overflow: hidden;
@@ -121,6 +115,8 @@
 
 .chevron,
 .chevronOpen {
+    position: relative;
+    z-index: 1;
     flex: 0 0 auto;
     width: 0.45rem;
     height: 0.45rem;
@@ -136,41 +132,21 @@
 }
 
 .dropdown {
+    position: relative;
     margin-top: 0.45rem;
-    padding: 0.85rem 0.75rem 0.75rem;
     border: 1px solid color-mix(in srgb, var(--foreground-color) 12%, transparent);
     border-radius: 0.85rem;
-    background: rgba(255, 255, 255, 0.55);
-    background: color-mix(in srgb, var(--background-color) 42%, transparent);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    background: transparent;
     color: var(--color-text-muted);
     font-size: 0.8rem;
     line-height: 1.35;
-    box-shadow:
-        0 1px 0 color-mix(in srgb, #ffffff 55%, transparent) inset,
-        0 10px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-    .dropdown {
-        background: rgba(32, 33, 36, 0.45);
-        background: color-mix(in srgb, var(--background-color) 38%, transparent);
-        border-color: color-mix(in srgb, #ffffff 14%, transparent);
-        box-shadow:
-            0 1px 0 color-mix(in srgb, #ffffff 12%, transparent) inset,
-            0 10px 28px rgba(0, 0, 0, 0.35);
-    }
-}
-
-.label {
-    font-family: "Lora", serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: 0.75rem;
+.dropdownInner {
+    position: relative;
+    z-index: 1;
+    padding: 0.85rem 0.75rem 0.75rem;
 }
 
 .chapters,
