@@ -74,6 +74,20 @@ article img {
     height: auto;
 }
 
+.figure {
+    margin: 0.5em 0 1.75em;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.figure-sm img {
+    max-width: min(100%, 28rem);
+}
+
 li::marker {
     color: var(--link-blue);
 }
@@ -184,6 +198,8 @@ tbody tr:not(:last-child) td {
         vertical-align: middle;
     }
 
+    /* Keep group headers visually separate from subheaders, but let the
+       midrule on the last header row run the full width (incl. col 1). */
     thead tr:first-child th {
         border-bottom: none;
         padding-bottom: 0.25em;
@@ -194,6 +210,19 @@ tbody tr:not(:last-child) td {
         font-size: 0.72rem;
         line-height: 1.25;
         vertical-align: bottom;
+        border-bottom: 1px solid var(--foreground-color);
+    }
+}
+
+/* Table 3: horizontal rules only between theoretical coding sections */
+.codes-table {
+    tbody tr:not(:last-child) td {
+        border-bottom: none;
+    }
+
+    td.section-cell,
+    tr.section-end td {
+        border-bottom: 1px solid var(--color-border);
     }
 }
 
