@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono&family=Lora:wght@400;500;700&display=swap");
+
+/* CSS Reset for consistent box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dimensions */
+    /* Note: With box-sizing: border-box, this includes padding (8pt on each side) */
+    --page-width: calc(800px + 16pt);
+
+    /* Fonts */
+    --sans-serif: "DM Sans", sans-serif;
+    --code-font:
+        "JetBrains Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+        monospace;
+
+    /* Colors */
+    --link-blue: rgb(0, 123, 205);
+    --foreground-color: #000000;
+    --background-color: #ffffff;
+    --soft-dark: rgba(0, 0, 0, 0.05);
+    --color-text: var(--foreground-color);
+    --color-text-muted: #666666;
+    --color-border: rgba(0, 0, 0, 0.2);
+
+    @media (prefers-color-scheme: dark) {
+        --link-blue: rgb(70, 181, 255);
+        --background-color: #202124;
+        --soft-dark: #151517;
+        --foreground-color: #ffffff;
+        --color-text-muted: #9aa0a6;
+        --color-border: rgba(255, 255, 255, 0.25);
+    }
+}

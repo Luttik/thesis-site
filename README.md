@@ -1,26 +1,43 @@
 # thesis-site
 
-Foundation for [thesis.daanluttik.nl](https://thesis.daanluttik.nl) — the public site for Daan Luttik's MBA thesis.
+Public site for Daan Luttik's MBA thesis, hosted at [thesis.daanluttik.nl](https://thesis.daanluttik.nl).
+
+Built with Next.js (Pages Router) and MDX, using the same design system as [daanluttik.nl](https://daanluttik.nl).
 
 ## Content
 
 | Path | Description |
 |------|-------------|
-| `content/Thesis - Daan Luttik - MBA.docx` | Source Word thesis |
-| `content/thesis.md` | Markdown export (via pandoc) |
-| `downloads/` | PDF and DOCX for download |
-| `index.html` | Landing page |
+| `content/thesis.mdx` | Full thesis (rendered on the homepage) |
+| `content/references.bib` | Bibliography source (synced from thesis-shareable) |
+| `content/media/` | Figures (also served from `public/media/`) |
 
-## Local preview
+Inline citations link to the matching reference entry; each reference entry links out to its DOI or URL.
 
-Serve the repo root with any static file server, for example:
+To refresh citations after editing the `.bib`:
 
 ```powershell
-npx --yes serve .
+python scripts/link_citations.py
 ```
 
-Then open the printed local URL.
+## Local development
+
+Requires Node.js 22+.
+
+```powershell
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Build
+
+```powershell
+npm run build
+npm start
+```
 
 ## Deploy
 
-Point a Vercel (or similar) project at this repo with static output from the repository root, and attach the domain `thesis.daanluttik.nl`.
+Point a Vercel project at this repo (default Next.js settings) and attach the domain `thesis.daanluttik.nl`.

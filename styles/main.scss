@@ -1,0 +1,224 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    line-height: 1.75em;
+    font-family: var(--sans-serif);
+    margin: 0;
+
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+}
+
+b,
+strong {
+    color: var(--link-blue);
+    font-weight: 600;
+}
+
+/* Table / figure labels (**Table 1.** / **Figure 1.**) stay body-colored */
+p:has(> strong:only-child) {
+    strong {
+        color: var(--foreground-color);
+        font-weight: 700;
+    }
+}
+
+.title-with-icon {
+    margin: 24pt 0 24pt 24pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.5em;
+    font-family: "Lora", serif;
+    font-weight: 500;
+    margin-block-start: 1.75em;
+    margin-block-end: 0.5em;
+    scroll-margin-top: 1.25rem;
+
+    a {
+        font-weight: inherit;
+        color: inherit;
+        text-decoration: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+h3 {
+    font-weight: 400;
+    font-style: italic;
+}
+
+hr {
+    border: none;
+    height: 0.5px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    opacity: 0.2;
+    background: var(--foreground-color);
+    display: block;
+}
+
+p img,
+article img {
+    max-width: 100%;
+    height: auto;
+}
+
+li::marker {
+    color: var(--link-blue);
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--link-blue);
+    font-weight: 500;
+
+    // Remove underline from card-style links
+    &:has(> div) {
+        text-decoration: none;
+        color: inherit;
+        font-weight: inherit;
+    }
+}
+
+blockquote {
+    margin: 16pt 0;
+    padding: 0.4pt 16pt;
+    font-size: inherit;
+    font-style: italic;
+
+    border-left: 4px solid var(--link-blue);
+}
+
+code {
+    font-size: 0.8rem;
+}
+
+code:not([class*="language-"]) {
+    display: inline-block;
+    line-height: 1em;
+    padding: 4pt 6pt;
+    border-radius: 6pt;
+    font-family: var(--code-font);
+    color: #dd4a68;
+
+    background-color: var(--soft-dark);
+}
+
+/* Booktabs-inspired tables (mirrors thesis-shareable LaTeX) */
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin: 0.35em 0 1.75em;
+}
+
+.table-caption {
+    font-size: 0.875rem;
+    margin: 1.75em 0 0.35em;
+    line-height: 1.4;
+
+    strong {
+        color: var(--foreground-color);
+        font-weight: 700;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--foreground-color);
+    /* toprule + bottomrule */
+    border-top: 2px solid var(--foreground-color);
+    border-bottom: 2px solid var(--foreground-color);
+}
+
+th,
+td {
+    border: none;
+    background: transparent;
+    padding: 0.4em 0.55em;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 400;
+}
+
+th {
+    font-weight: 700;
+    vertical-align: bottom;
+}
+
+/* midrule under header */
+thead tr:last-child th {
+    border-bottom: 1px solid var(--foreground-color);
+    padding-bottom: 0.5em;
+}
+
+tbody tr:first-child td {
+    padding-top: 0.5em;
+}
+
+tbody tr:not(:last-child) td {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.participants-table {
+    th,
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    thead tr:first-child th {
+        border-bottom: none;
+        padding-bottom: 0.25em;
+    }
+
+    thead tr:last-child th {
+        font-weight: 600;
+        font-size: 0.72rem;
+        line-height: 1.25;
+        vertical-align: bottom;
+    }
+}
+
+.ref-entry {
+    scroll-margin-top: 1.5rem;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+    margin: 0 0 0.85em;
+    line-height: 1.5;
+}
+
+.ref-entry a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--link-blue);
+        text-decoration: underline;
+    }
+}
+
+.ref-entry:target {
+    background-color: var(--soft-dark);
+    outline: 2px solid var(--link-blue);
+    outline-offset: 4px;
+    border-radius: 4px;
+}

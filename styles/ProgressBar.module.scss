@@ -1,0 +1,12 @@
+.progressBar {
+    position: fixed;
+    height: 2pt;
+    top: 0;
+    width: 100%;
+
+    .highlight {
+        height: 100%;
+
+        background-color: var(--link-blue);
+    }
+}

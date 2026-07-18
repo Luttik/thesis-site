@@ -1,0 +1,27 @@
+.homeLink {
+    text-decoration: none;
+    font-family: var(--sans-serif);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.blog {
+    margin: auto;
+    max-width: var(--page-width);
+    padding: 8pt;
+
+    .description {
+        font-style: italic;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16pt;
+        padding: 8pt 0 16pt 0;
+        font-weight: 300;
+    }
+}

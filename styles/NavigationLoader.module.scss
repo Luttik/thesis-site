@@ -1,0 +1,25 @@
+.bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--link-blue) 30%,
+        transparent 50%,
+        var(--link-blue) 70%
+    );
+    background-size: 200% 100%;
+    animation: slide 1s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}

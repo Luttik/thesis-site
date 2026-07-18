@@ -1,0 +1,97 @@
+.toc {
+    display: none;
+}
+
+@media (min-width: 1360px) {
+    .toc {
+        display: block;
+        position: fixed;
+        top: 3.5rem;
+        /* Align TOC's right edge just left of the reading column */
+        right: calc(50% + (var(--page-width) / 2) + 1.25rem);
+        left: auto;
+        width: 12.5rem;
+        max-height: calc(100vh - 5rem);
+        overflow-y: auto;
+        padding-right: 0.25rem;
+        font-size: 0.8rem;
+        line-height: 1.35;
+        color: var(--color-text-muted);
+        z-index: 20;
+        scrollbar-width: thin;
+    }
+}
+
+@media (min-width: 1600px) {
+    .toc {
+        width: 14.5rem;
+    }
+}
+
+.label {
+    font-family: "Lora", serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.chapters,
+.sections {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chapters > li {
+    margin-bottom: 0.45rem;
+}
+
+.chapterLink,
+.sectionLink,
+.sectionActive {
+    display: block;
+    color: inherit;
+    font-weight: 400;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding-left: 0.65rem;
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease;
+
+    &:hover {
+        color: var(--link-blue);
+        text-decoration: none;
+    }
+}
+
+.chapterActive > .chapterLink {
+    color: var(--foreground-color);
+    font-weight: 600;
+    border-left-color: var(--link-blue);
+}
+
+.sections {
+    margin-top: 0.35rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.15rem;
+}
+
+.sections > li {
+    margin-bottom: 0.3rem;
+}
+
+.sectionLink,
+.sectionActive {
+    font-size: 0.75rem;
+    padding-left: 1.1rem;
+}
+
+.sectionActive {
+    color: var(--link-blue);
+    font-weight: 500;
+    border-left-color: var(--link-blue);
+}
