@@ -1,0 +1,88 @@
+.wrap {
+    display: inline;
+}
+
+.marker {
+    display: inline-block;
+    padding: 0 0.15em;
+    margin: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    font-weight: 700;
+    color: var(--link-blue);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--link-blue);
+        outline-offset: 2px;
+    }
+}
+
+.note {
+    display: none;
+    font-family: var(--sans-serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+.noteOpen {
+    display: block;
+    margin: 0.4rem 0 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border-left: 2px solid var(--link-blue);
+    border-radius: 0 6pt 6pt 0;
+    background: var(--soft-dark);
+}
+
+.noteNumber {
+    display: none;
+}
+
+.noteOpen .noteNumber {
+    display: inline;
+    margin-right: 0.35em;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--link-blue);
+}
+
+/* Wide viewports: mirror the table of contents' margin (see TableOfContents.module.scss)
+   and let the note sit next to the text it annotates, like a Tufte-CSS sidenote. */
+@media (min-width: 1360px) {
+    .marker {
+        cursor: default;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .note,
+    .noteOpen {
+        display: block;
+        position: absolute;
+        left: 100%;
+        margin: -0.05em 0 0 1.75rem;
+        padding: 0;
+        width: 13rem;
+        border-left: none;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .noteNumber {
+        display: inline;
+        margin-right: 0.35em;
+        font-style: normal;
+        font-weight: 600;
+        color: var(--link-blue);
+    }
+}
