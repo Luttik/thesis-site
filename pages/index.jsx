@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import slug from "rehype-slug";
 import { Footer } from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
+import { Sidenote } from "../components/Sidenote";
 import { TableOfContents } from "../components/TableOfContents";
 import { NyenrodeLogo } from "../components/NyenrodeLogo";
 import { fileToMdx, THESIS_PATH } from "../utils/mdxUtils";
@@ -155,7 +156,7 @@ export default function Index({ source, frontMatter, readingTime }) {
                     </p>
                 ) : null}
                 <main>
-                    <MDXRemote {...source} />
+                    <MDXRemote {...source} components={{ Sidenote }} />
                 </main>
                 <Footer showDivider={true} />
             </div>

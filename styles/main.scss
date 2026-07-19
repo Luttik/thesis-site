@@ -79,6 +79,10 @@ h2 {
 
 /* Content headings only — leave page title/subtitle sizing alone */
 main {
+    /* Positioning context for sidenotes (see Sidenote.module.scss), so they
+       anchor to the reading column's right edge instead of the viewport. */
+    position: relative;
+
     h1,
     h2,
     h3,
