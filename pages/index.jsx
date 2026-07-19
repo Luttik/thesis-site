@@ -5,8 +5,27 @@ import slug from "rehype-slug";
 import { Footer } from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
 import { TableOfContents } from "../components/TableOfContents";
+import { NyenrodeLogo } from "../components/NyenrodeLogo";
 import { fileToMdx, THESIS_PATH } from "../utils/mdxUtils";
-import { blog, header, description as descriptionClass, homeLink, topActions, downloadButton } from "../styles/blog.module.scss";
+import {
+    blog,
+    header,
+    headerAuthor,
+    headerAvatar,
+    headerPrimary,
+    headerSecondary,
+    headerMeta,
+    description as descriptionClass,
+    homeLink,
+    topActions,
+    nyenrodeLogo,
+    downloadBanner,
+    downloadBannerCopy,
+    downloadBannerLabel,
+    downloadBannerTitle,
+    downloadBannerHint,
+    downloadBannerVisual,
+} from "../styles/blog.module.scss";
 
 const SITE_URL = "https://thesis.daanluttik.nl";
 
@@ -36,7 +55,6 @@ export default function Index({ source, frontMatter, readingTime }) {
         "Creating value with agentic AI in marketing";
     const subtitle = frontMatter.subtitle || "";
     const author = frontMatter.author || "Daan Luttik";
-    const supervisor = frontMatter.supervisor || "S. (Stefanie) Beninger";
     const date = formatDate(frontMatter.date);
     const description =
         frontMatter.description ||
@@ -64,58 +82,78 @@ export default function Index({ source, frontMatter, readingTime }) {
             <ProgressBar />
             <TableOfContents />
             <div className={blog}>
-                <h1 style={{ fontWeight: "800", marginBottom: "0pt" }}>
-                    {title}
-                </h1>
-                {subtitle ? (
-                    <p className={descriptionClass}>{subtitle}</p>
-                ) : null}
                 <div className={topActions}>
                     <a href="https://daanluttik.nl" className={homeLink}>
                         👈 daanluttik.nl
                     </a>
                     <a
-                        href="/thesis-daan-luttik-mba.pdf"
-                        className={downloadButton}
-                        download="Thesis - Daan Luttik - MBA.pdf"
+                        href="https://www.nyenrode.nl"
+                        className={nyenrodeLogo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Nyenrode Business Universiteit"
                     >
-                        Download PDF
+                        <NyenrodeLogo />
                     </a>
                 </div>
                 <div className={header}>
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div className={headerAuthor}>
                         <img
                             src="/img/daan-250x.jpg"
                             alt={author}
-                            style={{
-                                width: "3em",
-                                height: "3em",
-                                borderRadius: "3em",
-                                marginRight: "8pt",
-                            }}
+                            className={headerAvatar}
                         />
                         <div>
-                            <div
-                                style={{
-                                    fontWeight: "500",
-                                    fontSize: "1.1em",
-                                }}
-                            >
-                                {author}
-                            </div>
-                            <div>{date}</div>
-                            <div
-                                style={{
-                                    color: "var(--color-text-muted)",
-                                    fontSize: "0.9em",
-                                }}
-                            >
-                                Supervised by {supervisor}
-                            </div>
+                            <div className={headerPrimary}>{author}</div>
+                            <div className={headerSecondary}>{date}</div>
                         </div>
                     </div>
-                    <div>{readingTime}</div>
+                    <div className={headerMeta}>
+                        <div className={headerPrimary}>MBA thesis</div>
+                        <div className={headerSecondary}>{readingTime}</div>
+                    </div>
                 </div>
+                <a
+                    href="/thesis-daan-luttik-mba.pdf"
+                    className={downloadBanner}
+                    download="Thesis - Daan Luttik - MBA.pdf"
+                >
+                    <div className={downloadBannerCopy}>
+                        <span className={downloadBannerLabel}>PDF</span>
+                        <span className={downloadBannerTitle}>
+                            Download the thesis
+                        </span>
+                        <span className={downloadBannerHint}>
+                            Full document · ready to print
+                        </span>
+                    </div>
+                    <div className={downloadBannerVisual} aria-hidden="true">
+                        <img
+                            src="/media/page.jpg"
+                            alt=""
+                            width={420}
+                            height={594}
+                        />
+                    </div>
+                </a>
+                <h1
+                    style={{
+                        fontWeight: "800",
+                        marginTop: "0",
+                        marginBottom: "0pt",
+                        textAlign: "center",
+                    }}
+                >
+                    {title}
+                </h1>
+                {subtitle ? (
+                    <p
+                        className={descriptionClass}
+                        style={{ textAlign: "center" }}
+                    >
+                        {subtitle}
+                    </p>
+                ) : null}
                 <main>
                     <MDXRemote {...source} />
                 </main>
