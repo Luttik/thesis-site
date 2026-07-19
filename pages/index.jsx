@@ -60,6 +60,8 @@ export default function Index({ source, frontMatter, readingTime }) {
         frontMatter.description ||
         "MBA thesis by Daan Luttik on how marketing managers create value with agentic AI.";
     const pageTitle = `${title} — Daan Luttik`;
+    const ogImageUrl = `${SITE_URL}/img/og.jpg`;
+    const ogImageAlt = `${title} — MBA thesis by ${author} at Nyenrode Business Universiteit`;
 
     return (
         <>
@@ -77,7 +79,37 @@ export default function Index({ source, frontMatter, readingTime }) {
                     description,
                     type: "article",
                     siteName: "Daan Luttik — MBA Thesis",
+                    locale: "en_US",
+                    images: [
+                        {
+                            url: ogImageUrl,
+                            width: 1200,
+                            height: 630,
+                            alt: ogImageAlt,
+                            type: "image/jpeg",
+                        },
+                    ],
+                    article: {
+                        publishedTime: frontMatter.date || undefined,
+                        authors: [author],
+                        tags: [
+                            "agentic AI",
+                            "marketing",
+                            "MBA",
+                            "Nyenrode",
+                            "grounded theory",
+                        ],
+                    },
                 }}
+                twitter={{
+                    cardType: "summary_large_image",
+                }}
+                additionalMetaTags={[
+                    {
+                        name: "author",
+                        content: author,
+                    },
+                ]}
             />
             <ProgressBar />
             <TableOfContents />
