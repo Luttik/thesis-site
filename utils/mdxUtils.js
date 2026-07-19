@@ -6,6 +6,7 @@ import { serialize } from "next-mdx-remote/serialize";
 
 export const CONTENT_PATH = path.join(process.cwd(), "content");
 export const THESIS_PATH = path.join(CONTENT_PATH, "thesis.mdx");
+export const EMAIL_PATH = path.join(CONTENT_PATH, "email.mdx");
 
 export const fileToMdx = async (
     filePath,
