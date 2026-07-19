@@ -182,6 +182,10 @@
 .chapterActive > .chapterLink {
     color: var(--foreground-color);
     font-weight: 600;
+}
+
+/* Highlight line only on the lowest active level */
+.chapterActive:not(:has(.sectionActive)) > .chapterLink {
     border-left-color: var(--link-blue);
 }
 

@@ -128,6 +128,7 @@ export function TableOfContents() {
             {chapters.map((chapter) => {
                 const isActive = chapter.id === activeChapterId;
                 const showSections = isActive && chapter.sections.length > 0;
+                const highlightChapter = isActive && !activeSectionId;
 
                 return (
                     <li
@@ -137,7 +138,9 @@ export function TableOfContents() {
                         <a
                             href={`#${chapter.id}`}
                             className={styles.chapterLink}
-                            aria-current={isActive ? "location" : undefined}
+                            aria-current={
+                                highlightChapter ? "location" : undefined
+                            }
                             onClick={onNavigate}
                         >
                             {chapter.text}
